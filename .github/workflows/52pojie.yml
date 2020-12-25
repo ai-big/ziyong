@@ -19,7 +19,7 @@ jobs:
     steps:
       - name: Checkout
         run: |
-          git clone https://github.com/ai-big/ziyong.git ~/ziyong
+          git clone https://github.com/ai-big/Scripts.git ~/ziyong
       - name: Use Node.js 12.x
         uses: actions/setup-node@v1
         with:
@@ -27,13 +27,13 @@ jobs:
       - name: npm install
         if: env.PJ_COOKIE
         run: |
-          cd ~/ziyong
+          cd ~/Scripts
           npm install
       - name: '运行 【吾爱破解】'
         if: env.PJ_COOKIE
         run: |
-          cd ~/ziyong
-          node task/52pojie.js
+          cd ~/Scripts
+          node Task/52pojie.js
         env:
           YOUTH_NOTIFY_CONTROL: ${{ secrets.YOUTH_NOTIFY_CONTROL }}
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
