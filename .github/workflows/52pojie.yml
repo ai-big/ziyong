@@ -19,7 +19,7 @@ jobs:
     steps:
       - name: Checkout
         run: |
-          git clone https://github.com/ai-big/Scripts.git ~/ziyong
+          git clone https://github.com/muxu-i/Scripts.git ~/ziyong
       - name: Use Node.js 12.x
         uses: actions/setup-node@v1
         with:
