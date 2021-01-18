@@ -31,6 +31,6 @@
           if: env.YOUTH_HEADER
           run: |
            node Task/youth.js
-           env:
+          env:
            YOUTH_HEADER: ${{ secrets.YOUTH_HEADER }}
 
