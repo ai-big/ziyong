@@ -1,0 +1,46 @@
+ name: Lexho
+
+ on:
+   workflow_dispatch:
+   schedule:
+      - cron: '*/5 * * * *'
+   watch:
+     types: started
+   repository_dispatch:
+     types: _
+
+ jobs:
+   build:
+     runs-on: ubuntu-latest
+     if: github.event.repository.owner.id == github.event.sender.id
+     steps:
+       - name: Checkout
+         uses: actions/checkout@v2
+       - name: Use Node.js 12.x
+         uses: actions/setup-node@v1
+         with:
+           node-version: 12.x
+       - name: npm install
+         run: |
+           npm install
+       - name: '运行 【腾讯自选股】'
+         run: |
+           node txstock.js
+       - name: '运行 【抖音极速版】'
+         run: |
+           node dy.js
+       - name: '运行 【火山极速版】'
+         run: |
+           node hs.js
+       - name: '运行 【抖音火山版】'
+         run: |
+           node dyhs.js
+       - name: '运行 【步步宝】'
+         run: |
+           node bbb.js
+       - name: '运行 【快看点】'
+         run: |
+           node kkd.js
+         env:
+           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+           TG_USER_ID: ${{ secrets.TG_USER_ID }}
