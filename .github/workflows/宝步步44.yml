@@ -1,4 +1,4 @@
-name: 宝步步（安卓）
+name: 宝步步（4438）
 on:
   workflow_dispatch:
   schedule:
