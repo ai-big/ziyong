@@ -1,0 +1,34 @@
+name: BB宝（4438）
+on:
+  workflow_dispatch:
+  schedule:
+     - cron: '0,30 0-15 * * *'
+  watch:
+    types: started
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: github.event.repository.owner.id == github.event.sender.id
+
+    steps:
+      - name: Checkout
+        run: |
+          git clone https://github.com/ziye11/JavaScript.git ~/JavaScript
+      - name: Use Node.js 12.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - name: npm install
+        run: |
+          cd ~/JavaScript
+          npm install
+      - name: '运行 【步步宝】'
+        run: |
+          cd ~/JavaScript
+          node Task/bububao.js
+        env:
+          BBB_bububaoTOKEN: ${{ secrets.BBB_bububaoTOKEN}}
+          BBB_CASH: ${{ secrets.BBB_CASH}}
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_USER_ID: ${{ secrets.TG_USER_ID }}
+
