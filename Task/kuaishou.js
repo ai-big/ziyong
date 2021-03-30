@@ -86,55 +86,55 @@ function formalHost(api,body){
   }
 }
 
-function formalCenter() {
-  return new Promise((resolve, reject) =>{
-    $.post(formalHost('lowActive/module/list', '{"bizId":29,"configId":1}'), async(error, resp, data) =>{
-      let central = JSON.parse(data);
-$.log("\n----------------------------------------\n\n现在开始正式版任务")
-      try {
-        if (central.result == 1) {
-          for (lists of central.modules) {
-            Id = lists.moduleId,
-            moduleDesc = lists.moduleDesc;
-            $.log("\n"+moduleDesc);
-            for (tasks of lists.tasks) {
+//function formalCenter() {
+ // return new Promise((resolve, reject) =>{
+    //$.post(formalHost('lowActive/module/list', '{"bizId":29,"configId":1}'), async(error, resp, data) =>{
+     // let central = JSON.parse(data);
+//$.log("\n----------------------------------------\n\n现在开始正式版任务")
+     // try {
+       // if (central.result == 1) {
+        //  for (lists of central.modules) {
+         //   Id = lists.moduleId,
+           // moduleDesc = lists.moduleDesc;
+           // $.log("\n"+moduleDesc);
+           // for (tasks of lists.tasks) {
               //$.log(JSON.stringify(tasks,null,2));
-              status = tasks.status,
-              bizId = tasks.bizId,
-              tasktoken = tasks.token,
-              eventId = tasks.eventId,
-              schemeText = tasks.schemeText
-              taskName = tasks.reward.rewardName;
-                if (status == 5) {
-                  $.log(taskName + "  " + tasks.schemeText)
-                } else if (status == 2) {
-                  $.log(taskName + schemeText);
-                 if (Id == "1123") {
-                  await formalSign();
-                  break
-                } else if (Id == "1176") {
+            //  status = tasks.status,
+             // bizId = tasks.bizId,
+          //tasktoken = tasks.token,
+             // eventId = tasks.eventId,
+             // schemeText = tasks.schemeText
+              //taskName = tasks.reward.rewardName;
+               // if (status == 5) {
+               //   $.log(taskName + "  " + tasks.schemeText)
+             //   } else if (status == 2) {
+               //   $.log(taskName + schemeText);
+              //   if (Id == "1123") {
+                 // await formalSign();
+                //  break
+               // } else if (Id == "1176") {
                 //$.log(taskName)
-                  await getReward();
-                  break
-               }
-              } else if (Id == "1749"){
-                 if(status == 4){
-                  await openbox(tasktoken, eventId)
-                 } else if(status == 1){
-                  $.log(tasks.reward.rewardName+"，时间未达到")
-                }
-              }
-            }
-          }
-        }
-      } catch(e) {
-        $.log("领取金币失败\n" + e + JSON.stringify(result, null, 2))
-      } finally {
-        resolve()
-      }
-    })
-  })
-}
+                //  await getReward();
+                 // break
+              // }
+             // } else if (Id == "1749"){
+              //   if(status == 4){
+              //    await openbox(tasktoken, eventId)
+               //  } else if(status == 1){
+             //     $.log(tasks.reward.rewardName+"，时间未达到")
+             //   }
+           //   }
+          //  }
+        //  }
+      //  }
+    //  } catch(e) {
+      //  $.log("领取金币失败\n" + e + JSON.stringify(result, null, 2))
+      //} finally {
+    //    resolve()
+    //  }
+   // })
+ // })
+//}
 
 function openbox(tokens, eventId) {
   return new Promise((resolve, reject) =>{
