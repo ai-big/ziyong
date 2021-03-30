@@ -11,7 +11,7 @@ let cookieArr = [];
 let ks_tokens = $.getdata('cookie_ks');
 const notify = $.isNode() ? require('./sendNotify') : '';
 const nebulaCash = $.getdata('cash_nebulaks')||"10";
-const cashType = $.getdata('tpcash_nebula')||"ALIPAY";
+const cashType = $.getdata('tpcash_nebula')||"WECHAT";
 
 let isGetCookie = typeof $request !== 'undefined'
 if (isGetCookie) {
