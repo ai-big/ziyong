@@ -85,6 +85,20 @@ function formalHost(api,body){
      body: body
   }
 }
+function nebulaWithdraw() {
+   return new Promise((resolve, reject) => {
+	$.post(nebulaHost('outside/withdraw/apply',`{"channel":"${cashType}","amount":${nebulacash}}`),  (error, resp, data) =>{
+	let result = JSON.parse(data); 
+	if (result.result == 1) {
+        $.msg($.name,"极速版提现成功，提现")
+		  } 
+        else {
+         $.log(result.error_msg)
+         }
+          resolve()
+	   })
+    })
+ }
 
 //function formalCenter() {
  // return new Promise((resolve, reject) =>{
@@ -292,20 +306,6 @@ if(nebulaTask.extParam.todayIsSigned==false){
     })
  }
 
-function nebulaWithdraw() {
-   return new Promise((resolve, reject) => {
-	$.post(nebulaHost('outside/withdraw/apply',`{"channel":"${cashType}","amount":${nebulacash}}`),  (error, resp, data) =>{
-	let result = JSON.parse(data); 
-	if (result.result == 1) {
-        $.msg($.name,"极速版提现成功，提现")
-		  } 
-        else {
-         $.log(result.error_msg)
-         }
-          resolve()
-	   })
-    })
- }
 
 function nebulaHost(api,body){
   return {
