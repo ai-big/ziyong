@@ -4,7 +4,7 @@ name: 快手视频签到
 on:
   workflow_dispatch:
   schedule:
-     - cron: '15 0,10 * * *'
+     - cron: '1 0,10 * * *'
   watch:
     types: started
 jobs:
@@ -16,19 +16,19 @@ jobs:
     steps:
       - name: Checkout
         run: |
-          git clone https://github.com/Sunert/Scripts.git ~/Scripts
+          git clone https://github.com/ai-big/ziyong.git ~/ziyong
       - name: Use Node.js 12.x
         uses: actions/setup-node@v1
         with:
           node-version: 12.x
       - name: npm install
         run: |
-          cd ~/Scripts
+          cd ~/ziyong
           npm install
       - name: 运行 【快手视频签到】
         if: env.KS_TOKEN
         run: |
-          cd ~/Scripts
+          cd ~/ziyong
           node Task/kuaishou.js
         env:
           PUSH_KEY: ${{ secrets.PUSH_KEY || github.event.client_payload.PUSH_KEY }}
