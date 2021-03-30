@@ -53,10 +53,10 @@ if (!$.isNode() && ks_tokens.indexOf('&') == -1) {
       console.log(`\n------------------------\n\n开始【快手视频账号${$.index}】\n`)
      await nebulaInfo();
      await nebulaPopup();
-     await formalCenter();
-     await formalSign();
+     //await formalCenter();
+     //await formalSign();
   if(offici_code !== 100119){
-     await formalinfo();
+     //await formalinfo();
    }; 
      $.desc = `【正式版】:\n  `+offic_info+"\n  "+offic_sign +'\n'
      $.desc += `【极速版】:\n  `+speed_rewards+"\n  "+speed_info;
