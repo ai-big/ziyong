@@ -19,7 +19,7 @@
                   npm install
             - name: 'Run 【HSshipin】'
               run: |
-                  node Task/hotsoon_old.js
+                  node hotsoon_old.js
         env:
              HOTSOONSIGNHEADER: ${{ secrets. HOTSOONSIGNHEADER }}
              HOTSOONSIGNKEY: ${{ secrets. HOTSOONSIGNKEY }}
