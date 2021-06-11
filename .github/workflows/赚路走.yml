@@ -34,7 +34,7 @@ jobs:
       - name: 'Run zuoluZ'
         if: env.XIAOMUYUHEADER
         run: |
-          node Task/zlz.js
+          node zlz.js
         env:
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
           BARK_PUSH: ${{ secrets.BARK_PUSH }}
