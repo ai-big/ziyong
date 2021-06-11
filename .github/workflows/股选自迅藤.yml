@@ -28,7 +28,7 @@ jobs:
           npm install
       - name: 'Run 【TXzixuangu】'
         run: |
-          node Task/txstock.js
+          node txstock.js
         env:
 
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
