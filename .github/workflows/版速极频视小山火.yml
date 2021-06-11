@@ -1,0 +1,31 @@
+ name: 版速极频视小山火
+
+ on:
+   workflow_dispatch:
+   schedule:
+     - cron: '*/1 * * * *'
+ jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/checkout@v1
+            - name: Use Node.js 10.x
+              uses: actions/setup-node@v1
+              with:
+                  node-version: 10.x
+            - name: npm install
+              run: |
+                  npm install
+            - name: 'Run 【HSshipin】'
+              run: |
+                  node Task/hotsoon_old.js
+        env:
+             HOTSOONSIGNHEADER: ${{ secrets. HOTSOONSIGNHEADER }}
+             HOTSOONSIGNKEY: ${{ secrets. HOTSOONSIGNKEY }}
+             HOTSOONADHEADER: ${{ secrets. HOTSOONADHEADER }}
+             HOTSOONADKEY: ${{ secrets. HOTSOONADKEY }}
+             HOTSOONREADHEADER: ${{ secrets. HOTSOONREADHEADER }}
+             HOTSOONREADKEY: ${{ secrets. HOTSOONREADKEY }}
+             TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+             TG_USER_ID: ${{ secrets.TG_USER_ID }}

@@ -1,0 +1,43 @@
+name: 闻新讯腾
+on:
+  workflow_dispatch:
+  schedule:
+     - cron: '*/3 * * * *'
+  watch:
+    types: started
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: github.event.repository.owner.id == github.event.sender.id
+    env:
+          TXNEWS_SIGN: ${{ secrets.TXNEWS_SIGN }}
+          TXNEWS_COOKIE: ${{ secrets.TXNEWS_COOKIE }}
+          TXNEWS_VIDEO: ${{ secrets.TXNEWS_VIDEO }}	
+        
+    steps:
+      - name: Checkout
+        run: |
+          git clone https://github.com/ai1983/ziji.git ~/ziji
+      - name: Use Node.js 12.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - name: npm install
+        if: env.TXNEWS_SIGN
+        run: |
+          cd ~/ziji
+          npm install
+      - name: 'Run 【Txnews】'
+        if: env.TXNEWS_SIGN
+        run: |
+          cd ~/ziji
+          node Task/txnews.js
+        env:
+          
+          PUSH_KEY: ${{ secrets.PUSH_KEY }}
+          BARK_PUSH: ${{ secrets.BARK_PUSH }}
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_USER_ID: ${{ secrets.TG_USER_ID }}
+          BARK_SOUND: ${{ secrets.BARK_SOUND }}
+          DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
+          DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}

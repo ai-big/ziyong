@@ -1,0 +1,27 @@
+﻿ name: 番茄小说
+
+ on:
+   workflow_dispatch:
+   schedule:
+     - cron: '0 0-8/1 * * *'
+ jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/checkout@v1
+            - name: Use Node.js 10.x
+              uses: actions/setup-node@v1
+              with:
+                  node-version: 10.x
+            - name: npm install
+              run: |
+                  npm install
+            - name: 'Run 【fanjiexiaoshou】'
+              run: |
+                  node fqxs.js
+        env:
+              FQXS: ${{ secrets.FQXS}}
+              FQXSURL: ${{ secrets.FQXSURL}}
+              TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+              TG_USER_ID: ${{ secrets.TG_USER_ID }}
