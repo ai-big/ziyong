@@ -31,7 +31,7 @@ jobs:
       - name: 'Run 【Txnewsauto】'
         if: env.TX_CK
         run: |
-          node Task/txnews_task.js
+          node txnews_task.js
         env:
           TX_CK: ${{ secrets.TX_CK }}
           TX_READ: ${{ secrets.TX_READ }}
@@ -40,7 +40,7 @@ jobs:
       - name: 'Run 【Txnewsauto2】'
         if: env.TX_CK2
         run: |
-          node Task/txnews_task.js
+          node txnews_task.js
         env:
           TX_CK2: ${{ secrets.TX_CK2 }}
           TX_READ: ${{ secrets.TX_READ }}
@@ -49,7 +49,7 @@ jobs:
       - name: 'Run 【Txnewsauto3】'
         if: env.TX_CK3
         run: |
-          node Task/txnews_task.js
+          node txnews_task.js
         env:
           TX_CK3: ${{ secrets.TX_CK3 }}
           TX_READ: ${{ secrets.TX_READ }}
@@ -58,7 +58,7 @@ jobs:
       - name: 'Run 【Txnewsauto4】'
         if: env.TX_CK4
         run: |
-          node Task/txnews_task.js
+          node txnews_task.js
         env:
           TX_CK4: ${{ secrets.TX_CK4 }}
           TX_READ: ${{ secrets.TX_READ }}
