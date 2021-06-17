@@ -21,9 +21,9 @@ jobs:
       - name: npm install
         run: |
           cd ~/Daily-tasks
-          git checkout master
+          git checkout No-Fork
           npm install
-      - name: '运行 【书旗小说】'
+      - name: Run 【SHUQI】'
         run: |
           cd ~/Daily-tasks
           node Task/shuqi.js
